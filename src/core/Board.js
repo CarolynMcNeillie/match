@@ -1,14 +1,18 @@
 import React from "react";
 
-import { Card } from "common/components/Card";
+import { Card } from "common/components";
 import { CardFaces } from "common/components/CardFaces";
+
+import styles from "./Board.module.scss";
 
 export const Board = () => {
   return (
-    <>
-      {CardFaces.map(card => (
-        <Card name="{card.name}">{card.face}</Card>
+    <div syle={styles.board}>
+      {CardFaces.map((card, i) => (
+        <Card name="{card.name}" key={i}>
+          {card.face}
+        </Card>
       ))}
-    </>
+    </div>
   );
 };

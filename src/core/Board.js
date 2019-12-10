@@ -33,7 +33,7 @@ export const Board = () => {
   return (
     <div className={styles.board}>
       {randCards.map((card, i) => (
-        <Card name="{card.name}" key={i}>
+        <Card name={card.name} key={i}>
           {card.face}
         </Card>
       ))}

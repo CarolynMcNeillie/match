@@ -1,3 +1,7 @@
+#Assignment #2: Events and State
+## [Based on React Memory Game] (https://react-memory-match.herokuapp.com/)
+
+
 # twg-react-project-template
 A template to make React projects based on [TWG's React project structure](https://github.com/twg/react-guidelines/blob/master/guidelines/project-structure.md).
 

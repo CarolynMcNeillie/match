@@ -5,14 +5,14 @@ import classNames from "classnames";
 import styles from "./Card.module.scss";
 
 export const Card = ({ name, face, children }) => {
-  const [isFaceUp, setFaceUp] = useState(false);
+  const [isFaceUp, setIsFaceUp] = useState(false);
 
   const handleFlip = e => {
     if (!isFaceUp) {
-      setFaceUp(true);
+      setIsFaceUp(true);
       console.log(name);
       setTimeout(function() {
-        setFaceUp(false);
+        setIsFaceUp(false);
       }, 1500);
     }
   };
@@ -30,9 +30,9 @@ export const Card = ({ name, face, children }) => {
 
 Card.propTypes = {
   name: PropTypes.string.isRequired,
-  faceUp: PropTypes.bool
+  isFaceUp: PropTypes.bool
 };
 
 Card.defaultProps = {
-  faceUp: false
+  isFaceUp: false
 };

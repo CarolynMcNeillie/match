@@ -10,7 +10,7 @@ export const Card = ({ name, face, children }) => {
   const handleFlip = e => {
     if (!isFaceUp) {
       setFaceUp(true);
-      console.log(e.target.getAttribute("data-name"));
+      console.log(name);
       setTimeout(function() {
         setFaceUp(false);
       }, 1500);

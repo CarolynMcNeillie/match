@@ -4,13 +4,13 @@ import classNames from "classnames";
 
 import styles from "./Card.module.scss";
 
-export const Card = ({ name, face, children }) => {
+export const Card = ({ card, children }) => {
   const [isFaceUp, setIsFaceUp] = useState(false);
 
   const handleFlip = e => {
     if (!isFaceUp) {
       setIsFaceUp(true);
-      console.log(name);
+      console.log(card.name);
       setTimeout(function() {
         setIsFaceUp(false);
       }, 1500);
@@ -22,14 +22,18 @@ export const Card = ({ name, face, children }) => {
   });
 
   return (
-    <article className={cardClassName} data-name={name} onClick={handleFlip}>
+    <article
+      className={cardClassName}
+      data-name={card.name}
+      onClick={handleFlip}
+    >
       <span className={styles.card__face}>{children}</span>
     </article>
   );
 };
 
 Card.propTypes = {
-  name: PropTypes.string.isRequired,
+  card: PropTypes.object.isRequired,
   isFaceUp: PropTypes.bool
 };
 

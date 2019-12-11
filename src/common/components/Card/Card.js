@@ -4,6 +4,7 @@ import classNames from "classnames";
 
 import styles from "./Card.module.scss";
 
+<<<<<<< HEAD
 export const Card = ({ name, face, handleCompare, children }) => {
   const [isFaceUp, setFaceUp] = useState(false);
 
@@ -11,28 +12,41 @@ export const Card = ({ name, face, handleCompare, children }) => {
     if (!isFaceUp) {
       setFaceUp(true);
       handleCompare(e.target.getAttribute("data-name"));
+=======
+export const Card = ({ card, children }) => {
+  const [isFaceUp, setIsFaceUp] = useState(false);
+
+  const handleFlip = e => {
+    if (!isFaceUp) {
+      setIsFaceUp(true);
+      console.log(card.name);
+>>>>>>> origin/card-flip
       setTimeout(function() {
-        setFaceUp(false);
+        setIsFaceUp(false);
       }, 1500);
     }
   };
 
   const cardClassName = classNames(styles.card, {
-    [styles["card--faceUp"]]: isFaceUp
+    [styles["card--face-up"]]: isFaceUp
   });
 
   return (
-    <article className={cardClassName} data-name={name} onClick={handleFlip}>
+    <article
+      className={cardClassName}
+      data-name={card.name}
+      onClick={handleFlip}
+    >
       <span className={styles.card__face}>{children}</span>
     </article>
   );
 };
 
 Card.propTypes = {
-  name: PropTypes.string.isRequired,
-  faceUp: PropTypes.bool
+  card: PropTypes.object.isRequired,
+  isFaceUp: PropTypes.bool
 };
 
 Card.defaultProps = {
-  faceUp: false
+  isFaceUp: false
 };

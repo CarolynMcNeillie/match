@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 export const CardFaces = [{
     name: 'tongue',
+=======
+export const cardFaces = [{
+    name: 'a',
+>>>>>>> origin/card-flip
     face: '😛'
   },
   {

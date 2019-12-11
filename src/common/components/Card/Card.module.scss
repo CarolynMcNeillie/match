@@ -1,6 +1,7 @@
 .card {
   display: flex;
-  background: #fafafa;
+  border: 5px solid #fafafa;
+  background: #2971a9;
   height: 175px;
   width: 125px;
   border-radius: 10px;
@@ -10,4 +11,16 @@
   line-height: 60px;
   box-shadow: 2px 2px 6px rgba(30, 15, 0, 0.3);
 
+  .card__face {
+    display: none;
+    user-select: none;
+  }
+
+  &--faceUp {
+    background: #fafafa;
+
+    .card__face {
+      display: block;
+    }
+  }
 }

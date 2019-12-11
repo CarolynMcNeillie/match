@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 
-import { Card, cardFaces } from "common";
+import { Card, cardFaces, flipCard } from "common";
 
 import styles from "./Board.module.scss";
 
 export const Board = () => {
   const [shuffledCards, setShuffledCards] = useState(cardFaces());
   const [inputTracker, setInputTracker] = useState([]);
-
-  const flipCard = card => {
-    const newCard = {
-      name: card.name,
-      face: card.face,
-      isFaceUp: !card.isFaceUp
-    };
-    return newCard;
-  };
 
   const handleFlip = (key, card) => {
     if (!card.isFaceUp) {

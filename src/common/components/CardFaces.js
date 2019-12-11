@@ -1,4 +1,4 @@
-export const CardFaces = [{
+export const cardFaces = [{
     name: 'a',
     face: '😛'
   },

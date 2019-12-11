@@ -18,7 +18,7 @@ export const Card = ({ name, face, children }) => {
   };
 
   const cardClassName = classNames(styles.card, {
-    [styles["card--faceUp"]]: isFaceUp
+    [styles["card--face-up"]]: isFaceUp
   });
 
   return (

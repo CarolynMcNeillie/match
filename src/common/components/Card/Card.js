@@ -9,8 +9,6 @@ export const Card = ({ card, onClick, children }) => {
     [styles["card--face-up"]]: card.isFaceUp
   });
 
-  console.log(card.isFaceUp);
-
   return (
     <article className={cardClassName} data-name={card.name} onClick={onClick}>
       <span className={styles.card__face}>{children}</span>

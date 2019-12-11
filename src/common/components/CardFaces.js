@@ -1,25 +1,26 @@
 export const CardFaces = [{
-    name: 'a',
+    name: 'tongue',
     face: '😛'
   },
   {
-    name: 'b',
+    name: 'nerd',
     face: '🤓'
   },
   {
-    name: 'c',
-    face: '😚'
-  },
-  {
-    name: 'd',
+    name: 'grimace',
     face: '😬'
   },
   {
-    name: 'e',
-    face: '😅'
-  },
-  {
-    name: 'f',
+    name: 'agony',
     face: '😩'
   },
 ]
+
+// {
+//   name: 'sweat',
+//   face: '😅'
+// },
+// {
+//   name: 'kiss',
+//   face: '😚'
+// },

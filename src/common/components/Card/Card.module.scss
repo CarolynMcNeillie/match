@@ -12,7 +12,8 @@
   box-shadow: 2px 2px 6px rgba(30, 15, 0, 0.3);
 
   .card__face {
-    display: none;
+    // display: none;
+    opacity: 0.5;
     user-select: none;
   }
 
@@ -21,6 +22,7 @@
 
     .card__face {
       display: block;
+      opacity: 1;
     }
   }
 }

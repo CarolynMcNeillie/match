@@ -4,13 +4,13 @@ import classNames from "classnames";
 
 import styles from "./Card.module.scss";
 
-export const Card = ({ name, face, children }) => {
+export const Card = ({ name, face, handleCompare, children }) => {
   const [isFaceUp, setFaceUp] = useState(false);
 
   const handleFlip = e => {
     if (!isFaceUp) {
       setFaceUp(true);
-      console.log(e.target.getAttribute("data-name"));
+      handleCompare(e.target.getAttribute("data-name"));
       setTimeout(function() {
         setFaceUp(false);
       }, 1500);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Card } from "common/components";
 import { CardFaces } from "common/components/CardFaces";
@@ -29,11 +29,33 @@ export const Board = () => {
   };
 
   const randCards = shuffle(doubleCards(CardFaces));
+  const [userClicked, setUserClicked] = useState("");
+
+  const handleCompare = name => {
+    if (userClicked === "") {
+      console.log("First card is: ", name);
+      setUserClicked(name);
+    } else {
+      console.log(
+        "First card is: ",
+        userClicked,
+        ", and the second card is: ",
+        name
+      );
+
+      if (userClicked === name) {
+        console.log("BIG MATCH ENERGY");
+      } else {
+        console.log("NOT A MATCH");
+      }
+      setUserClicked("");
+    }
+  };
 
   return (
     <div className={styles.board}>
       {randCards.map((card, i) => (
-        <Card name={card.name} key={i}>
+        <Card name={card.name} key={i} handleCompare={handleCompare}>
           {card.face}
         </Card>
       ))}

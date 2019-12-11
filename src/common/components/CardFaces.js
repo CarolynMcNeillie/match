@@ -1,31 +1,39 @@
-<<<<<<< HEAD
-export const CardFaces = [{
+import {
+  shuffleArray,
+  doubleArray
+} from "common";
+
+const cardSet = [{
     name: 'tongue',
-=======
-export const cardFaces = [{
-    name: 'a',
->>>>>>> origin/card-flip
-    face: '😛'
+    face: '😛',
+    isFaceUp: false
   },
   {
     name: 'nerd',
-    face: '🤓'
+    face: '🤓',
+    isFaceUp: false
   },
   {
     name: 'grimace',
-    face: '😬'
+    face: '😬',
+    isFaceUp: false
   },
   {
     name: 'agony',
-    face: '😩'
+    face: '😩',
+    isFaceUp: false
   },
 ]
 
+export const cardFaces = () => shuffleArray(doubleArray(cardSet))
+
 // {
 //   name: 'sweat',
-//   face: '😅'
+//   face: '😅',
+//   isFaceUp: false
 // },
 // {
 //   name: 'kiss',
-//   face: '😚'
+//   face: '😚',
+//   isFaceUp: false
 // },

@@ -24,14 +24,3 @@ const cardSet = [
 ];
 
 export const cardFaces = () => shuffleArray(doubleArray(cardSet));
-
-// {
-//   name: 'sweat',
-//   face: '😅',
-//   isFaceUp: false
-// },
-// {
-//   name: 'kiss',
-//   face: '😚',
-//   isFaceUp: false
-// },

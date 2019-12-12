@@ -1,12 +1,8 @@
-import React, {
-  useState
-} from "react";
+import React, { useState } from "react";
 
-import {
-  Card,
-  cardFaces,
-  flipCard
-} from "common";
+import { Card, cardFaces } from "common";
+
+import { flipCard } from "common/utils";
 
 import styles from "./Board.module.scss";
 
@@ -21,10 +17,12 @@ export const Board = () => {
       setShuffledCards(updatedCards);
       setTimeout(() => {
         if (inputTracker.length === 0) {
-          setInputTracker([{
-            index: `${key}`,
-            name: `${card.name}`
-          }]);
+          setInputTracker([
+            {
+              index: `${key}`,
+              name: `${card.name}`
+            }
+          ]);
         } else {
           if (inputTracker[0].name === card.name) {
             console.log(inputTracker[0].name, card.name, "PAIR");
@@ -38,33 +36,27 @@ export const Board = () => {
           }
           setInputTracker([]);
         }
-      }, 500)
+      }, 500);
     } else {
       console.log("no way buddy!");
     }
   };
 
-  return ( <
-    div className = {
-      styles.board
-    } > {
-      shuffledCards.map((card, i) => ( <
-        Card card = {
-          card
-        }
-        key = {
-          i
-        }
-        onClick = {
-          () => {
+  return (
+    <div className={styles.board}>
+      {" "}
+      {shuffledCards.map((card, i) => (
+        <Card
+          card={card}
+          key={i}
+          onClick={() => {
             handleFlip(i, card);
-          }
-        } > {
-          card.face
-        } <
-        /Card>
-      ))
-    } <
-    /div>
+          }}
+        >
+          {" "}
+          {card.face}{" "}
+        </Card>
+      ))}{" "}
+    </div>
   );
 };

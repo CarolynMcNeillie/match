@@ -10,8 +10,8 @@ export const Card = ({ card, onClick, children }) => {
   });
 
   return (
-    <article className={cardClassName} data-name={card.name} onClick={onClick}>
-      <span className={styles.card__face}>{children}</span>
+    <article className={cardClassName} onClick={onClick}>
+      <span className={styles.card__face}> {children} </span>{" "}
     </article>
   );
 };

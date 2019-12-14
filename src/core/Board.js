@@ -15,28 +15,28 @@ export const Board = () => {
       const updatedCards = [...shuffledCards];
       updatedCards[key] = flipCard(card);
       setShuffledCards(updatedCards);
-      setTimeout(() => {
-        if (inputTracker.length === 0) {
-          setInputTracker([
-            {
-              index: `${key}`,
-              name: `${card.name}`
-            }
-          ]);
+      if (inputTracker.length === 0) {
+        setInputTracker([
+          {
+            index: `${key}`,
+            name: `${card.name}`
+          }
+        ]);
+      } else {
+        if (inputTracker[0].name === card.name) {
+          console.log(inputTracker[0].name, card.name, "PAIR");
         } else {
-          if (inputTracker[0].name === card.name) {
-            console.log(inputTracker[0].name, card.name, "PAIR");
-          } else {
+          setTimeout(() => {
             console.log(inputTracker[0].name, card.name, "NOPE");
             updatedCards[inputTracker[0].index] = flipCard(
               updatedCards[inputTracker[0].index]
             );
             updatedCards[key] = flipCard(updatedCards[key]);
             setShuffledCards(updatedCards);
-          }
-          setInputTracker([]);
+          }, 500);
         }
-      }, 500);
+        setInputTracker([]);
+      }
     } else {
       console.log("no way buddy!");
     }

@@ -1,7 +1,6 @@
 export const flipCard = card => {
   const newCard = {
-    name: card.name,
-    face: card.face,
+    ...card,
     isFaceUp: !card.isFaceUp
   };
   return newCard;

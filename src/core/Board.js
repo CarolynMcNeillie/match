@@ -9,52 +9,65 @@ import styles from "./Board.module.scss";
 export const Board = () => {
   const [shuffledCards, setShuffledCards] = useState(cardFaces());
   const [inputTracker, setInputTracker] = useState([]);
+  const [turnCounter, setTurnCounter] = useState(0);
+  const [matchCounter, setMatchCounter] = useState(0);
+
+  const compareCards = compareArray => {
+    const firstCard = shuffledCards[compareArray[0]].name;
+    const secondCard = shuffledCards[compareArray[1]].name;
+    console.log(firstCard, secondCard);
+
+    if (firstCard === secondCard) {
+      setMatchCounter(matchCounter + 1);
+    } else {
+      setTimeout(() => {
+        const newUpdatedCards = [...shuffledCards];
+        compareArray.forEach(cardIndex => {
+          newUpdatedCards[cardIndex] = flipCard(
+            newUpdatedCards[cardIndex],
+            false
+          );
+        });
+        setShuffledCards(newUpdatedCards);
+      }, 1000);
+    }
+  };
 
   const handleFlip = (key, card) => {
     if (!card.isFaceUp) {
       const updatedCards = [...shuffledCards];
-      updatedCards[key] = flipCard(card);
+      const updatedTracker = [...inputTracker];
+      updatedCards[key] = flipCard(card, true);
       setShuffledCards(updatedCards);
-      if (inputTracker.length === 0) {
-        setInputTracker([
-          {
-            index: `${key}`,
-            name: `${card.name}`
-          }
-        ]);
+      if (inputTracker[turnCounter] === undefined) {
+        updatedTracker[turnCounter] = [key];
       } else {
-        if (inputTracker[0].name === card.name) {
-          console.log(inputTracker[0].name, card.name, "PAIR");
-        } else {
-          setTimeout(() => {
-            console.log(inputTracker[0].name, card.name, "NOPE");
-            updatedCards[inputTracker[0].index] = flipCard(
-              updatedCards[inputTracker[0].index]
-            );
-            updatedCards[key] = flipCard(updatedCards[key]);
-            setShuffledCards(updatedCards);
-          }, 500);
-        }
-        setInputTracker([]);
+        updatedTracker[turnCounter][1] = key;
+        setTurnCounter(turnCounter + 1);
+        compareCards(updatedTracker[turnCounter]);
       }
-    } else {
-      console.log("no way buddy!");
+      setInputTracker(updatedTracker);
     }
   };
 
   return (
-    <div className={styles.board}>
-      {shuffledCards.map((card, i) => (
-        <Card
-          card={card}
-          key={i}
-          onClick={() => {
-            handleFlip(i, card);
-          }}
-        >
-          {card.face}
-        </Card>
-      ))}
-    </div>
+    <>
+      <p>
+        Tries: {turnCounter}, Matches: {matchCounter}
+      </p>
+      <div className={styles.board}>
+        {shuffledCards.map((card, i) => (
+          <Card
+            card={card}
+            key={i}
+            onClick={() => {
+              handleFlip(i, card);
+            }}
+          >
+            {card.face}
+          </Card>
+        ))}
+      </div>
+    </>
   );
 };

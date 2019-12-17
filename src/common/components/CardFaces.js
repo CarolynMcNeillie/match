@@ -1,25 +1,79 @@
-export const cardFaces = [{
-    name: 'a',
-    face: '😛'
+import {
+  shuffleArray,
+  doubleArray
+} from "common/utils";
+
+const cardSet = [{
+    name: "tongue",
+    face: "😛",
+    isFaceUp: false
   },
   {
-    name: 'b',
-    face: '🤓'
+    name: "nerd",
+    face: "🤓",
+    isFaceUp: false
   },
   {
-    name: 'c',
-    face: '😚'
+    name: "grimace",
+    face: "😬",
+    isFaceUp: false
   },
   {
-    name: 'd',
-    face: '😬'
+    name: "agony",
+    face: "😩",
+    isFaceUp: false
   },
   {
-    name: 'e',
-    face: '😅'
+    name: "heart",
+    face: "❤️",
+    isFaceUp: false
+  }, {
+    name: "family",
+    face: "👨‍👩‍👧‍👦",
+    isFaceUp: false
   },
   {
-    name: 'f',
-    face: '😩'
+    name: "comuter",
+    face: "🖥",
+    isFaceUp: false
+  }, {
+    name: "taco",
+    face: "🌮",
+    isFaceUp: false
   },
-]
+  {
+    name: "train",
+    face: "🚃",
+    isFaceUp: false
+  }, {
+    name: "bus",
+    face: "🚌",
+    isFaceUp: false
+  }, {
+    name: "apple",
+    face: "🍎",
+    isFaceUp: false
+  }, {
+    name: "flower",
+    face: "🌸",
+    isFaceUp: false
+  }, {
+    name: "airplane",
+    face: "✈️",
+    isFaceUp: false
+  }, {
+    name: "present",
+    face: "🎁",
+    isFaceUp: false
+  }, {
+    name: "bear",
+    face: "🐻",
+    isFaceUp: false
+  }, {
+    name: "baby",
+    face: "👶🏼",
+    isFaceUp: false
+  }
+];
+
+export const cardFaces = () => shuffleArray(doubleArray(cardSet));

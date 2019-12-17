@@ -44,7 +44,6 @@ export const Board = () => {
 
   return (
     <div className={styles.board}>
-      {" "}
       {shuffledCards.map((card, i) => (
         <Card
           card={card}
@@ -53,10 +52,9 @@ export const Board = () => {
             handleFlip(i, card);
           }}
         >
-          {" "}
-          {card.face}{" "}
+          {card.face}
         </Card>
-      ))}{" "}
+      ))}
     </div>
   );
 };

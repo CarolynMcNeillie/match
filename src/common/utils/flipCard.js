@@ -1,8 +1,7 @@
-export const flipCard = (card, bool = !card.isFaceUp) => {
+export const flipCard = (card, isFaceUp = !card.isFaceUp) => {
   const newCard = {
     ...card,
-    // isFaceUp: !card.isFaceUp
-    isFaceUp: bool
+    isFaceUp
   };
   return newCard;
 };

@@ -37,7 +37,7 @@ export const Board = () => {
     if (!card.isFaceUp) {
       const updatedCards = [...shuffledCards];
       const updatedTracker = [...inputTracker];
-      updatedCards[key] = flipCard(card, true);
+      updatedCards[key] = flipCard(card);
       setShuffledCards(updatedCards);
       if (inputTracker[turnCounter] === undefined) {
         updatedTracker[turnCounter] = [key];

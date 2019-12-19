@@ -1,4 +1,4 @@
-export const flipCard = (card, bool) => {
+export const flipCard = (card, bool = !card.isFaceUp) => {
   const newCard = {
     ...card,
     // isFaceUp: !card.isFaceUp

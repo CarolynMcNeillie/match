@@ -11,7 +11,7 @@ export const Card = ({ card, onClick, children }) => {
 
   return (
     <article className={cardClassName} onClick={onClick}>
-      <span className={styles.card__face}> {children} </span>{" "}
+      <span className={styles.card__face}>{card.face}</span>
     </article>
   );
 };

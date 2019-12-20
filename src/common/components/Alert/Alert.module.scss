@@ -1,0 +1,91 @@
+.alert {
+  position: absolute;
+  top: 0;
+  left: -200%;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.2s opacity ease-in;
+
+  // Animated gradients from https://www.gradient-animator.com
+  background: linear-gradient(270deg, #ffea00, #ffa600);
+  background-size: 400% 400%;
+
+  -webkit-animation: winner 23s ease infinite;
+  -moz-animation: winner 23s ease infinite;
+  animation: winner 23s ease infinite;
+
+  @-webkit-keyframes winner {
+    0% {
+      background-position: 0% 50%
+    }
+
+    50% {
+      background-position: 100% 50%
+    }
+
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @-moz-keyframes winner {
+    0% {
+      background-position: 0% 50%
+    }
+
+    50% {
+      background-position: 100% 50%
+    }
+
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @keyframes winner {
+    0% {
+      background-position: 0% 50%
+    }
+
+    50% {
+      background-position: 100% 50%
+    }
+
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  h1 {
+    font-size: 50px;
+    line-height: 50px;
+    margin: 0 0 25px;
+    font-family: 'Fredoka One', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: crimson;
+    text-shadow: 1px 1px darkred;
+  }
+
+  p {
+    font-size: 15px;
+    text-transform: uppercase;
+    line-height: 25px;
+    margin: 0 0 25px;
+    letter-spacing: 0.1em;
+  }
+
+  strong {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  &--isVisible {
+    left: 0;
+    opacity: 1;
+  }
+}

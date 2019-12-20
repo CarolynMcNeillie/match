@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Card, cardFaces } from "common";
+import { Alert, Button, Card, cardFaces } from "common";
 
 import { flipCard } from "common/utils";
 
@@ -11,13 +11,31 @@ export const Board = () => {
   const [inputTracker, setInputTracker] = useState([]);
   const [turnCounter, setTurnCounter] = useState(0);
   const [matchCounter, setMatchCounter] = useState(0);
+  const [isWinner, setIsWinner] = useState(false);
+
+  const totalPairs = shuffledCards.length / 2;
+
+  const shuffleCards = () => {
+    setShuffledCards(cardFaces());
+    setInputTracker([]);
+    setTurnCounter(0);
+    setMatchCounter(0);
+    setIsWinner(false);
+  };
 
   const compareCards = compareArray => {
     const firstCard = shuffledCards[compareArray[0]].name;
     const secondCard = shuffledCards[compareArray[1]].name;
-    console.log(firstCard, secondCard);
 
     if (firstCard === secondCard) {
+      console.log(
+        totalPairs,
+        matchCounter + 1,
+        totalPairs === matchCounter + 1
+      );
+      if (totalPairs === matchCounter + 1) {
+        setIsWinner(true);
+      }
       setMatchCounter(matchCounter + 1);
     } else {
       setTimeout(() => {
@@ -55,6 +73,14 @@ export const Board = () => {
       <p>
         Tries: {turnCounter}, Matches: {matchCounter}
       </p>
+      <Alert isVisible={isWinner}>
+        <h1>Winner!</h1>
+        <p>
+          It took you <strong>{turnCounter}</strong> tries to find{" "}
+          <strong>{matchCounter}</strong> pairs
+        </p>
+        <Button onClick={shuffleCards}>Play again!</Button>
+      </Alert>
       <div className={styles.board}>
         {shuffledCards.map((card, i) => (
           <Card

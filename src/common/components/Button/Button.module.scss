@@ -1,0 +1,23 @@
+.button {
+  background: #2971a9;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-family: 'Fredoka One', cursive;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 20px;
+  text-shadow: 1px 1px black;
+  box-shadow: 7px 7px black;
+  transition: 0.2s background ease-in-out;
+
+  &:hover {
+    background: lighten(#2971a9, 10%);
+  }
+
+  &:active {
+    background: black;
+    box-shadow: 0px 0px transparent;
+  }
+}

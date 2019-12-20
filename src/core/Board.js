@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import { Alert, Button, Card, cardFaces } from "common";
+import { Alert, Button, Card } from "common";
 
-import { flipCard } from "common/utils";
+import { flipCard, getShuffledCards } from "common/utils";
 
 import styles from "./Board.module.scss";
 
 export const Board = () => {
-  const [shuffledCards, setShuffledCards] = useState(cardFaces());
+  const [shuffledCards, setShuffledCards] = useState(getShuffledCards());
   const [inputTracker, setInputTracker] = useState([]);
   const [turnCounter, setTurnCounter] = useState(0);
   const [matchCounter, setMatchCounter] = useState(0);
@@ -16,7 +16,7 @@ export const Board = () => {
   const totalPairs = shuffledCards.length / 2;
 
   const dealCards = () => {
-    setShuffledCards(cardFaces());
+    setShuffledCards(getShuffledCards());
     setInputTracker([]);
     setTurnCounter(0);
     setMatchCounter(0);

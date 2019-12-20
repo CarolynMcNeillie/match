@@ -1,7 +1,16 @@
 .board {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  margin: auto;
-  width: calc((155px * 8));
+  padding: 100px;
+
+  &__cards--container {
+    justify-content: center;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    margin: auto;
+    max-width: 800px;
+
+    >* {
+      justify-self: center;
+    }
+  }
 }

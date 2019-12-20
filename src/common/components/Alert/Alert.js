@@ -9,7 +9,9 @@ export const Alert = ({ isVisible, children }) => {
     [styles["alert--isVisible"]]: isVisible
   });
 
-  return <div className={alertClassName}>{children}</div>;
+  return (
+    <aside className={alertClassName}>{isVisible ? children : null}</aside>
+  );
 };
 
 Alert.propTypes = {

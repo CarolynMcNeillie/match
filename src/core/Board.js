@@ -69,10 +69,7 @@ export const Board = () => {
   };
 
   return (
-    <>
-      <p>
-        Tries: {turnCounter}, Matches: {matchCounter}
-      </p>
+    <div className={styles.board}>
       <Alert isVisible={isWinner}>
         <h1>Winner!</h1>
         <p>
@@ -81,7 +78,7 @@ export const Board = () => {
         </p>
         <Button onClick={shuffleCards}>Play again!</Button>
       </Alert>
-      <div className={styles.board}>
+      <div className={styles["board__cards--container"]}>
         {shuffledCards.map((card, cardIndex) => (
           <Card
             card={card}
@@ -92,6 +89,6 @@ export const Board = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };

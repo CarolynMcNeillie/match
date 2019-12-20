@@ -15,7 +15,7 @@ export const Board = () => {
 
   const totalPairs = shuffledCards.length / 2;
 
-  const shuffleCards = () => {
+  const dealCards = () => {
     setShuffledCards(cardFaces());
     setInputTracker([]);
     setTurnCounter(0);
@@ -76,7 +76,7 @@ export const Board = () => {
           It took you <strong>{turnCounter}</strong> tries to find{" "}
           <strong>{matchCounter}</strong> pairs
         </p>
-        <Button onClick={shuffleCards}>Play again!</Button>
+        <Button onClick={dealCards}>Play again!</Button>
       </Alert>
       <div className={styles["board__cards--container"]}>
         {shuffledCards.map((card, cardIndex) => (

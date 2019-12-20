@@ -10,7 +10,11 @@ export const Alert = ({ isVisible, children }) => {
   });
 
   return (
-    <aside className={alertClassName}> {isVisible ? children : null} </aside>
+    <aside className={alertClassName}>
+      {isVisible ? (
+        <div className={styles.alert__container}>{children}</div>
+      ) : null}
+    </aside>
   );
 };
 

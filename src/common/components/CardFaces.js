@@ -1,6 +1,5 @@
 import {
   shuffleArray,
-  reduceArray,
   doubleArray
 } from "common/utils";
 

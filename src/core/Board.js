@@ -73,17 +73,19 @@ export const Board = () => {
         </p>
         <Button onClick={dealCards}>Play again!</Button>
       </Alert>
-      <div className={styles["board__cards--container"]}>
-        {shuffledCards.map((card, cardIndex) => (
-          <Card
-            card={card}
-            key={cardIndex}
-            onClick={() => {
-              handleFlip(cardIndex, card);
-            }}
-          />
-        ))}
-      </div>
+      {!isWinner ? (
+        <div className={styles["board__cards--container"]}>
+          {shuffledCards.map((card, cardIndex) => (
+            <Card
+              card={card}
+              key={cardIndex}
+              onClick={() => {
+                handleFlip(cardIndex, card);
+              }}
+            />
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 };

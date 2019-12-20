@@ -10,12 +10,12 @@ export const Alert = ({ isVisible, children }) => {
   });
 
   return (
-    <aside className={alertClassName}>{isVisible ? children : null}</aside>
+    <aside className={alertClassName}> {isVisible ? children : null} </aside>
   );
 };
 
 Alert.propTypes = {
-  isVisible: PropTypes.bool
+  isVisible: PropTypes.bool.isRequired
 };
 
 Alert.defaultProps = {

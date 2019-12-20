@@ -28,11 +28,6 @@ export const Board = () => {
     const secondCard = shuffledCards[compareArray[1]].name;
 
     if (firstCard === secondCard) {
-      console.log(
-        totalPairs,
-        matchCounter + 1,
-        totalPairs === matchCounter + 1
-      );
       if (totalPairs === matchCounter + 1) {
         setIsWinner(true);
       }

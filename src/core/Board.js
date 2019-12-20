@@ -82,16 +82,14 @@ export const Board = () => {
         <Button onClick={shuffleCards}>Play again!</Button>
       </Alert>
       <div className={styles.board}>
-        {shuffledCards.map((card, i) => (
+        {shuffledCards.map((card, cardIndex) => (
           <Card
             card={card}
-            key={i}
+            key={cardIndex}
             onClick={() => {
-              handleFlip(i, card);
+              handleFlip(cardIndex, card);
             }}
-          >
-            {card.face}
-          </Card>
+          />
         ))}
       </div>
     </>

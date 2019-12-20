@@ -1,9 +1,7 @@
-import {
-  shuffleArray,
-  doubleArray
-} from "common/utils";
+import { shuffleArray, doubleArray } from "common/utils";
 
-const cardSet = [{
+const cardSet = [
+  {
     name: "tongue",
     face: "😛",
     isFaceUp: false
@@ -27,7 +25,8 @@ const cardSet = [{
     name: "heart",
     face: "❤️",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "family",
     face: "👨‍👩‍👧‍👦",
     isFaceUp: false
@@ -36,7 +35,8 @@ const cardSet = [{
     name: "comuter",
     face: "🖥",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "taco",
     face: "🌮",
     isFaceUp: false
@@ -45,35 +45,43 @@ const cardSet = [{
     name: "train",
     face: "🚃",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "bus",
     face: "🚌",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "apple",
     face: "🍎",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "flower",
     face: "🌸",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "airplane",
     face: "✈️",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "present",
     face: "🎁",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "bear",
     face: "🐻",
     isFaceUp: false
-  }, {
+  },
+  {
     name: "baby",
     face: "👶🏼",
     isFaceUp: false
   }
 ];
 
-export const cardFaces = () => shuffleArray(doubleArray(cardSet));
+export const getShuffledCards = (numberOfCards = 5) =>
+  shuffleArray(doubleArray(shuffleArray(cardSet).slice(0, numberOfCards)));

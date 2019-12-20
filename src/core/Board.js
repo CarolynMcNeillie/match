@@ -1,23 +1,36 @@
 import React, { useState } from "react";
 
-import { Card, cardFaces } from "common";
+import { Alert, Button, Card } from "common";
 
-import { flipCard } from "common/utils";
+import { flipCard, getShuffledCards } from "common/utils";
 
 import styles from "./Board.module.scss";
 
 export const Board = () => {
-  const [shuffledCards, setShuffledCards] = useState(cardFaces());
+  const [shuffledCards, setShuffledCards] = useState(getShuffledCards());
   const [inputTracker, setInputTracker] = useState([]);
   const [turnCounter, setTurnCounter] = useState(0);
   const [matchCounter, setMatchCounter] = useState(0);
+  const [isWinner, setIsWinner] = useState(false);
+
+  const totalPairs = shuffledCards.length / 2;
+
+  const dealCards = () => {
+    setShuffledCards(getShuffledCards());
+    setInputTracker([]);
+    setTurnCounter(0);
+    setMatchCounter(0);
+    setIsWinner(false);
+  };
 
   const compareCards = compareArray => {
     const firstCard = shuffledCards[compareArray[0]].name;
     const secondCard = shuffledCards[compareArray[1]].name;
-    console.log(firstCard, secondCard);
 
     if (firstCard === secondCard) {
+      if (totalPairs === matchCounter + 1) {
+        setIsWinner(true);
+      }
       setMatchCounter(matchCounter + 1);
     } else {
       setTimeout(() => {
@@ -51,21 +64,28 @@ export const Board = () => {
   };
 
   return (
-    <>
-      <p>
-        Tries: {turnCounter}, Matches: {matchCounter}
-      </p>
-      <div className={styles.board}>
-        {shuffledCards.map((card, cardIndex) => (
-          <Card
-            card={card}
-            key={cardIndex}
-            onClick={() => {
-              handleFlip(cardIndex, card);
-            }}
-          />
-        ))}
-      </div>
-    </>
+    <div className={styles.board}>
+      <Alert isVisible={isWinner}>
+        <h1>Winner!</h1>
+        <p>
+          It took you <strong>{turnCounter}</strong> tries to find{" "}
+          <strong>{matchCounter}</strong> pairs
+        </p>
+        <Button onClick={dealCards}>Play again!</Button>
+      </Alert>
+      {!isWinner ? (
+        <div className={styles["board__cards--container"]}>
+          {shuffledCards.map((card, cardIndex) => (
+            <Card
+              card={card}
+              key={cardIndex}
+              onClick={() => {
+                handleFlip(cardIndex, card);
+              }}
+            />
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 };

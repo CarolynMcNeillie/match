@@ -1,85 +1,71 @@
-import { shuffleArray, doubleArray } from "common/utils";
+import {
+  shuffleArray,
+  doubleArray
+} from "common/utils";
 
-const cardSet = [
-  {
+const cardSet = [{
     name: "tongue",
-    face: "😛",
-    isFaceUp: false
+    face: "😛"
   },
   {
     name: "nerd",
-    face: "🤓",
-    isFaceUp: false
+    face: "🤓"
   },
   {
     name: "grimace",
-    face: "😬",
-    isFaceUp: false
+    face: "😬"
   },
   {
     name: "agony",
-    face: "😩",
-    isFaceUp: false
+    face: "😩"
   },
   {
     name: "heart",
-    face: "❤️",
-    isFaceUp: false
+    face: "❤️"
   },
   {
     name: "family",
-    face: "👨‍👩‍👧‍👦",
-    isFaceUp: false
+    face: "👨‍👩‍👧‍👦"
   },
   {
     name: "comuter",
-    face: "🖥",
-    isFaceUp: false
+    face: "🖥"
   },
   {
     name: "taco",
-    face: "🌮",
-    isFaceUp: false
+    face: "🌮"
   },
   {
     name: "train",
-    face: "🚃",
-    isFaceUp: false
+    face: "🚃"
   },
   {
     name: "bus",
-    face: "🚌",
-    isFaceUp: false
+    face: "🚌"
   },
   {
     name: "apple",
-    face: "🍎",
-    isFaceUp: false
+    face: "🍎"
   },
   {
     name: "flower",
-    face: "🌸",
-    isFaceUp: false
+    face: "🌸"
   },
   {
     name: "airplane",
-    face: "✈️",
-    isFaceUp: false
+    face: "✈️"
   },
   {
     name: "present",
-    face: "🎁",
-    isFaceUp: false
+    face: "🎁"
   },
   {
     name: "bear",
-    face: "🐻",
-    isFaceUp: false
+    face: "🐻"
   },
   {
     name: "baby",
-    face: "👶🏼",
-    isFaceUp: false
+    face: "👶🏼"
   }
 ];
 

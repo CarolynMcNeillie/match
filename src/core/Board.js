@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Alert, Button, Card } from "common";
 
-import { flipCard, getShuffledCards } from "common/utils";
+import { getShuffledCards } from "common/utils";
 
 import styles from "./Board.module.scss";
 
@@ -12,6 +12,7 @@ export const Board = () => {
   const [turnCounter, setTurnCounter] = useState(0);
   const [matchCounter, setMatchCounter] = useState(0);
   const [isWinner, setIsWinner] = useState(false);
+  const [flippedCards, setFlippedCards] = useState([]);
 
   const totalPairs = shuffledCards.length / 2;
 
@@ -34,24 +35,25 @@ export const Board = () => {
       setMatchCounter(matchCounter + 1);
     } else {
       setTimeout(() => {
-        const newUpdatedCards = [...shuffledCards];
+        const updatedFlippedCards = [...flippedCards];
         compareArray.forEach(cardIndex => {
-          newUpdatedCards[cardIndex] = flipCard(
-            newUpdatedCards[cardIndex],
-            false
-          );
+          const index = updatedFlippedCards.indexOf(cardIndex);
+
+          if (index > -1) {
+            updatedFlippedCards.splice(index, 1);
+          }
         });
-        setShuffledCards(newUpdatedCards);
+        setFlippedCards(updatedFlippedCards);
       }, 1000);
     }
   };
 
   const handleFlip = (key, card) => {
-    if (!card.isFaceUp) {
-      const updatedCards = [...shuffledCards];
+    if (!flippedCards.includes(key)) {
+      const updatedFlippedCards = [...flippedCards];
       const updatedTracker = [...inputTracker];
-      updatedCards[key] = flipCard(card);
-      setShuffledCards(updatedCards);
+      updatedFlippedCards.push(key);
+      setFlippedCards(updatedFlippedCards);
       if (inputTracker[turnCounter] === undefined) {
         updatedTracker[turnCounter] = [key];
       } else {
@@ -75,15 +77,21 @@ export const Board = () => {
       </Alert>
       {!isWinner ? (
         <div className={styles["board__cards--container"]}>
-          {shuffledCards.map((card, cardIndex) => (
-            <Card
-              card={card}
-              key={cardIndex}
-              onClick={() => {
-                handleFlip(cardIndex, card);
-              }}
-            />
-          ))}
+          {shuffledCards.map((card, cardIndex) => {
+            return (
+              <Card
+                card={{
+                  ...card,
+                  isFaceUp: flippedCards.includes(cardIndex)
+                }}
+                key={cardIndex}
+                isFaceUp={flippedCards.includes(cardIndex)}
+                onClick={() => {
+                  handleFlip(cardIndex, card);
+                }}
+              />
+            );
+          })}
         </div>
       ) : null}
     </div>

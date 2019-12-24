@@ -12,6 +12,9 @@ export const Routes = () => {
       <Route exact path="/">
         <Board />
       </Route>
+      <Route exact path="/match">
+        <Board />
+      </Route>
       <Route path="/Simon">
         <Board player={users.simon} />
       </Route>

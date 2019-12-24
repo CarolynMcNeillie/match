@@ -10,6 +10,7 @@ export const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
+        <p>HIHIHIHI</p>
         <Board />
       </Route>
       <Route exact path="/match">

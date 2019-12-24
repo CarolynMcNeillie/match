@@ -1,10 +1,22 @@
 @import-normalize;
 
+:root {
+  --pageBackground: #eeeeea;
+  --cardBackground: rgb(0, 123, 255);
+  --alertBackground: linear-gradient(270deg, purple, #ffa600);
+  --alertName: #fff;
+  --buttonColor: #555;
+  --alertText: #000;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Nunito', sans-serif;
-  background-color: #eeeeea;
+  background: var(--pageBackground);
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
 }

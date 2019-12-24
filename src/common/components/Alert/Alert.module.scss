@@ -10,9 +10,10 @@
   align-items: center;
   opacity: 0;
   transition: 0.2s opacity ease-in;
+  color: var(--alertText);
 
   // Animated gradients from https://www.gradient-animator.com
-  background: linear-gradient(270deg, #ffea00, #ffa600);
+  background: var(--alertBackground);
   background-size: 400% 400%;
   animation: winner 23s ease infinite;
 
@@ -42,7 +43,7 @@
     font-family: 'Fredoka One', cursive;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: crimson;
+    color: var(--alertName);
     text-shadow: 1px 1px darkred;
   }
 

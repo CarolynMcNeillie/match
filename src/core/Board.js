@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, {
+  useState
+} from "react";
 
-import { Alert, Button, Card } from "common";
+import {
+  Alert,
+  Button,
+  Card
+} from "common";
 
-import { getShuffledCards } from "common/utils";
+import {
+  getShuffledCards,
+  setPlayer
+} from "common/utils";
 
 import styles from "./Board.module.scss";
 
-export const Board = () => {
+export const Board = ({
+  player
+}) => {
   const [shuffledCards, setShuffledCards] = useState(getShuffledCards());
   const [inputTracker, setInputTracker] = useState([]);
   const [turnCounter, setTurnCounter] = useState(0);
   const [matchCounter, setMatchCounter] = useState(0);
-  const [isWinner, setIsWinner] = useState(false);
+  const [winCounter, setWinCounter] = useState(0);
   const [flippedCards, setFlippedCards] = useState([]);
   const [isComparing, setIsComparing] = useState(false);
+  const [isWinner, setIsWinner] = useState(false);
 
   const totalPairs = shuffledCards.length / 2;
 
@@ -22,9 +34,14 @@ export const Board = () => {
     setInputTracker([]);
     setTurnCounter(0);
     setMatchCounter(0);
+    setFlippedCards([]);
     setIsWinner(false);
     setIsComparing(false);
   };
+
+  if (player) {
+    setPlayer(player.theme);
+  }
 
   const compareCards = compareArray => {
     const firstCard = shuffledCards[compareArray[0]].name;
@@ -32,7 +49,9 @@ export const Board = () => {
 
     if (firstCard === secondCard) {
       if (totalPairs === matchCounter + 1) {
+        setWinCounter(winCounter + 1);
         setIsWinner(true);
+        setIsComparing(false);
       }
       setMatchCounter(matchCounter + 1);
       setIsComparing(false);
@@ -70,35 +89,68 @@ export const Board = () => {
     }
   };
 
-  return (
-    <div className={styles.board}>
-      <Alert isVisible={isWinner}>
-        <h1>Winner!</h1>
-        <p>
-          It took you <strong>{turnCounter}</strong> tries to find{" "}
-          <strong>{matchCounter}</strong> pairs
-        </p>
-        <Button onClick={dealCards}>Play again!</Button>
-      </Alert>
-      {!isWinner ? (
-        <div className={styles["board__cards--container"]}>
-          {shuffledCards.map((card, cardIndex) => {
-            return (
-              <Card
-                card={{
+  return ( <
+      div className = {
+        styles.board
+      } >
+      <
+      Alert isVisible = {
+        isWinner
+      } >
+      <
+      h1 > {
+        player ? `${player.name} wins!` : `You win!`
+      } < /h1> <
+      p >
+      You won < strong > {
+        winCounter
+      } < /strong>{" "} {
+      winCounter === 1 ? `time` : `times`
+    }!
+    <
+    /p> <
+  p >
+    This time it took you < strong > {
+      turnCounter
+    } < /strong> tries to find{" "} <
+  strong > {
+      matchCounter
+    } < /strong> pairs < /
+    p > <
+    Button onClick = {
+      dealCards
+    } > Play again! < /Button> < /
+    Alert > {
+      !isWinner ? ( <
+        div className = {
+          styles["board__cards--container"]
+        } > {
+          shuffledCards.map((card, cardIndex) => {
+            return ( <
+              Card card = {
+                {
                   ...card,
                   isFaceUp: flippedCards.includes(cardIndex)
-                }}
-                key={cardIndex}
-                isFaceUp={flippedCards.includes(cardIndex)}
-                onClick={() => {
+                }
+              }
+              key = {
+                cardIndex
+              }
+              isFaceUp = {
+                flippedCards.includes(cardIndex)
+              }
+              onClick = {
+                () => {
                   handleFlip(cardIndex, card);
-                }}
+                }
+              }
               />
             );
-          })}
-        </div>
-      ) : null}
-    </div>
-  );
+          })
+        } <
+        /div>
+      ) : null
+    } <
+    /div>
+);
 };

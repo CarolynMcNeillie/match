@@ -4,36 +4,36 @@ import {
 } from "common/utils";
 
 const cardSet = [{
-    name: "tongue",
-    face: "😛"
+    name: "popo",
+    face: "🚓"
   },
   {
-    name: "nerd",
-    face: "🤓"
+    name: "taxi",
+    face: "🚕"
   },
   {
-    name: "grimace",
-    face: "😬"
+    name: "racecar",
+    face: "🏎"
   },
   {
-    name: "agony",
-    face: "😩"
+    name: "tractor",
+    face: "🚜"
   },
   {
-    name: "heart",
-    face: "❤️"
+    name: "firetruck",
+    face: "🚒"
   },
   {
-    name: "family",
-    face: "👨‍👩‍👧‍👦"
+    name: "danger",
+    face: "⚠️"
   },
   {
     name: "comuter",
-    face: "🖥"
+    face: "🚗"
   },
   {
-    name: "taco",
-    face: "🌮"
+    name: "moto",
+    face: "🏍"
   },
   {
     name: "train",
@@ -44,28 +44,32 @@ const cardSet = [{
     face: "🚌"
   },
   {
-    name: "apple",
-    face: "🍎"
+    name: "rocket",
+    face: "🚀"
   },
   {
-    name: "flower",
-    face: "🌸"
+    name: "train",
+    face: "🚂"
   },
   {
     name: "airplane",
     face: "✈️"
   },
   {
-    name: "present",
-    face: "🎁"
+    name: "warning",
+    face: "☢️"
   },
   {
-    name: "bear",
-    face: "🐻"
+    name: "construction",
+    face: "🚧"
   },
   {
-    name: "baby",
-    face: "👶🏼"
+    name: "copter",
+    face: "🚁"
+  },
+  {
+    name: "vespa",
+    face: "🛵"
   }
 ];
 

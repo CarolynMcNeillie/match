@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Alert, Button, Card } from "common";
 
-import { getShuffledCards } from "common/utils";
+import { compareCards, getShuffledCards } from "common/utils";
 
 import styles from "./Board.module.scss";
 
@@ -13,6 +13,7 @@ export const Board = () => {
   const [matchCounter, setMatchCounter] = useState(0);
   const [isWinner, setIsWinner] = useState(false);
   const [flippedCards, setFlippedCards] = useState([]);
+  const [isComparing, setIsComparing] = useState(false);
 
   const totalPairs = shuffledCards.length / 2;
 
@@ -22,34 +23,11 @@ export const Board = () => {
     setTurnCounter(0);
     setMatchCounter(0);
     setIsWinner(false);
-  };
-
-  const compareCards = compareArray => {
-    const firstCard = shuffledCards[compareArray[0]].name;
-    const secondCard = shuffledCards[compareArray[1]].name;
-
-    if (firstCard === secondCard) {
-      if (totalPairs === matchCounter + 1) {
-        setIsWinner(true);
-      }
-      setMatchCounter(matchCounter + 1);
-    } else {
-      setTimeout(() => {
-        const updatedFlippedCards = [...flippedCards];
-        compareArray.forEach(cardIndex => {
-          const index = updatedFlippedCards.indexOf(cardIndex);
-
-          if (index > -1) {
-            updatedFlippedCards.splice(index, 1);
-          }
-        });
-        setFlippedCards(updatedFlippedCards);
-      }, 1000);
-    }
+    setIsComparing(false);
   };
 
   const handleFlip = (key, card) => {
-    if (!flippedCards.includes(key)) {
+    if (!flippedCards.includes(key) && !isComparing) {
       const updatedFlippedCards = [...flippedCards];
       const updatedTracker = [...inputTracker];
       updatedFlippedCards.push(key);
@@ -57,9 +35,20 @@ export const Board = () => {
       if (inputTracker[turnCounter] === undefined) {
         updatedTracker[turnCounter] = [key];
       } else {
+        setIsComparing(true);
         updatedTracker[turnCounter][1] = key;
         setTurnCounter(turnCounter + 1);
-        compareCards(updatedTracker[turnCounter]);
+        compareCards(
+          shuffledCards,
+          inputTracker[turnCounter],
+          totalPairs,
+          matchCounter,
+          setIsWinner,
+          setMatchCounter,
+          flippedCards,
+          setFlippedCards,
+          setIsComparing
+        );
       }
       setInputTracker(updatedTracker);
     }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Alert, Button, Card } from "common";
 
-import { compareCards, getShuffledCards } from "common/utils";
+import { getShuffledCards } from "common/utils";
 
 import styles from "./Board.module.scss";
 
@@ -26,6 +26,32 @@ export const Board = () => {
     setIsComparing(false);
   };
 
+  const compareCards = compareArray => {
+    const firstCard = shuffledCards[compareArray[0]].name;
+    const secondCard = shuffledCards[compareArray[1]].name;
+
+    if (firstCard === secondCard) {
+      if (totalPairs === matchCounter + 1) {
+        setIsWinner(true);
+      }
+      setMatchCounter(matchCounter + 1);
+      setIsComparing(false);
+    } else {
+      setTimeout(() => {
+        const updatedFlippedCards = [...flippedCards];
+        compareArray.forEach(cardIndex => {
+          const index = updatedFlippedCards.indexOf(cardIndex);
+
+          if (index > -1) {
+            updatedFlippedCards.splice(index, 1);
+          }
+        });
+        setFlippedCards(updatedFlippedCards);
+        setIsComparing(false);
+      }, 1000);
+    }
+  };
+
   const handleFlip = (key, card) => {
     if (!flippedCards.includes(key) && !isComparing) {
       const updatedFlippedCards = [...flippedCards];
@@ -38,17 +64,7 @@ export const Board = () => {
         setIsComparing(true);
         updatedTracker[turnCounter][1] = key;
         setTurnCounter(turnCounter + 1);
-        compareCards(
-          shuffledCards,
-          inputTracker[turnCounter],
-          totalPairs,
-          matchCounter,
-          setIsWinner,
-          setMatchCounter,
-          flippedCards,
-          setFlippedCards,
-          setIsComparing
-        );
+        compareCards(updatedTracker[turnCounter]);
       }
       setInputTracker(updatedTracker);
     }

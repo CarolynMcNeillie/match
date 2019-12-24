@@ -14,6 +14,7 @@ export const Routes = () => {
         <Board />
       </Route>
       <Route exact path="/match">
+        MATCH
         <Board />
       </Route>
       <Route path="/Simon">

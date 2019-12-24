@@ -18,6 +18,9 @@ export const Routes = () => {
       <Route path="/Simon">
         <Board player={users.simon} />
       </Route>
+      <Route path="/match/Simon">
+        <Board player={users.simon} />
+      </Route>
       <Route path="/Nolan">
         <Board player={users.nolan} />
       </Route>

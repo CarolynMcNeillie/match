@@ -24,7 +24,13 @@ export const Routes = () => {
       <Route path="/Nolan">
         <Board player={users.nolan} />
       </Route>
+      <Route path="/match/Nolan">
+        <Board player={users.nolan} />
+      </Route>
       <Route path="/Connor">
+        <Board player={users.connor} />
+      </Route>
+      <Route path="/match/Connor">
         <Board player={users.connor} />
       </Route>
     </Switch>

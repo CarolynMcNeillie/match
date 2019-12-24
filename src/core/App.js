@@ -1,8 +1,8 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import styles from './App.module.scss'
-import { Routes } from './Routes'
+import styles from "./App.module.scss";
+import { Routes } from "./Routes";
 
 export const App = () => (
   <Router>
@@ -10,4 +10,4 @@ export const App = () => (
       <Routes />
     </main>
   </Router>
-)
+);

@@ -7,6 +7,7 @@ import { Routes } from "./Routes";
 export const App = () => (
   <Router>
     <main className={styles.app}>
+      HIHI
       <Routes />
     </main>
   </Router>

@@ -17,5 +17,6 @@ body {
   font-family: 'Nunito', sans-serif;
   background: var(--pageBackground);
   height: 100vh;
-  overflow: scroll;
+  overflow: hidden;
+  margin: 0;
 }
